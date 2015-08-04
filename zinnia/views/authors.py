@@ -37,7 +37,7 @@ class BaseAuthorDetail(object):
         build a queryset of his published entries.
         """
         self.author = get_object_or_404(
-            Author, **{Author.USERNAME_FIELD: self.kwargs['username']})
+            Author, **{Author.ZINNIA_USERNAME_FIELD: self.kwargs['username']})
         return self.author.entries_published()
 
     def get_context_data(self, **kwargs):

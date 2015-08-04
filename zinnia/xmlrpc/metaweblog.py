@@ -39,7 +39,7 @@ def authenticate(username, password, permission=None):
     """
     try:
         author = Author.objects.get(
-            **{'%s__exact' % Author.USERNAME_FIELD: username})
+            **{'%s__exact' % Author.ZINNIA_USERNAME_FIELD: username})
     except Author.DoesNotExist:
         raise Fault(LOGIN_ERROR, _('Username is incorrect.'))
     if not author.check_password(password):

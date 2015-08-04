@@ -235,7 +235,7 @@ class AuthorEntries(EntryFeed):
         """
         Retrieve the author by his username.
         """
-        return get_object_or_404(Author, **{Author.USERNAME_FIELD: username})
+        return get_object_or_404(Author, **{Author.ZINNIA_USERNAME_FIELD: username})
 
     def items(self, obj):
         """

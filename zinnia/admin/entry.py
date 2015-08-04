@@ -96,10 +96,10 @@ class EntryAdmin(admin.ModelAdmin):
         try:
             authors = ['<a href="%s" target="blank">%s</a>' %
                        (author.get_absolute_url(),
-                        getattr(author, author.USERNAME_FIELD))
+                        getattr(author, author.ZINNIA_USERNAME_FIELD))
                        for author in entry.authors.all()]
         except NoReverseMatch:
-            authors = [getattr(author, author.USERNAME_FIELD)
+            authors = [getattr(author, author.ZINNIA_USERNAME_FIELD)
                        for author in entry.authors.all()]
         return ', '.join(authors)
     get_authors.allow_tags = True

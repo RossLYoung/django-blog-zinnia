@@ -72,16 +72,16 @@ def createQ(token):
                     Q(categories__slug__iexact=search))
     elif meta == 'author':
         if wildcards == 'BOTH':
-            return Q(**{'authors__%s__icontains' % Author.USERNAME_FIELD:
+            return Q(**{'authors__%s__icontains' % Author.ZINNIA_USERNAME_FIELD:
                         search})
         elif wildcards == 'START':
-            return Q(**{'authors__%s__iendswith' % Author.USERNAME_FIELD:
+            return Q(**{'authors__%s__iendswith' % Author.ZINNIA_USERNAME_FIELD:
                         search})
         elif wildcards == 'END':
-            return Q(**{'authors__%s__istartswith' % Author.USERNAME_FIELD:
+            return Q(**{'authors__%s__istartswith' % Author.ZINNIA_USERNAME_FIELD:
                         search})
         else:
-            return Q(**{'authors__%s__iexact' % Author.USERNAME_FIELD:
+            return Q(**{'authors__%s__iexact' % Author.ZINNIA_USERNAME_FIELD:
                         search})
     elif meta == 'tag':  # TODO: tags ignore wildcards
         return Q(tags__icontains=search)
